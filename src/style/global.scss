@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  :root {
+
+		& * {
+			transition: color 0.2s ease, background-color 0.2s ease;
+		}
+		color: var(--color-primary-500);
+
+    --color-primary-900: #ffffff;
+		--color-primary-800: #fafafa;
+		--color-primary-700: #e8e8e8;
+		--color-primary-600: #3a3a3a;
+		--color-primary-500: #4a4a4a;
+		--color-primary-400: #5a5a5a;
+		--color-primary-300: #6a6a6a;
+		--color-primary-200: #7a7a7a;
+		--color-primary-100: #8a8a8a;
+		--color-primary-50: #9a9a9a;
+
+		// Secondary Colors
+		--color-secondary-900: #111111;
+		--color-secondary-800: #171717;
+		--color-secondary-700: #2a2a2a;
+		--color-secondary-600: #3a3a3a;
+		--color-secondary-500: #4a4a4a;
+		--color-secondary-400: #5a5a5a;
+		--color-secondary-300: #6a6a6a;
+		--color-secondary-200: #7a7a7a;
+		--color-secondary-100: #8a8a8a;
+		--color-secondary-50: #9a9a9a;
+
+		// Dark colors
+		--color-dark-900: #111111;
+		--color-dark-800: #171717;
+		--color-dark-700: #2a2a2a;
+		--color-dark-600: #3a3a3a;
+		--color-dark-500: #4a4a4a;
+		--color-dark-400: #5a5a5a;
+		--color-dark-300: #6a6a6a;
+		--color-dark-200: #7a7a7a;
+		--color-dark-100: #8a8a8a;
+		--color-dark-50: #9a9a9a;
+  }
+
+  :root[class~="dark"] {
+		--color-primary-900: #111111;
+		--color-primary-800: #171717;
+		--color-primary-700: #2a2a2a;
+		--color-primary-600: rgb(65, 65, 65);
+		--color-primary-500: #7a7a7a;
+		--color-primary-400: #7a7a7a;
+		--color-primary-300: #6a6a6a;
+		--color-primary-200: #7a7a7a;
+		--color-primary-100: #8a8a8a;
+		--color-primary-50: #9a9a9a;
+
+		// Secondary Colors
+		--color-secondary-900: #fafafa;
+		--color-secondary-800: #eeeeee;
+		--color-secondary-700: #2a2a2a;
+		--color-secondary-600: #3a3a3a;
+		--color-secondary-500: #ababab;
+		--color-secondary-400: #5a5a5a;
+		--color-secondary-300: #6a6a6a;
+		--color-secondary-200: #7a7a7a;
+		--color-secondary-100: #8a8a8a;
+		--color-secondary-50: #9a9a9a;
+  }
+}
+
+@layer utilities {
+	@variants responsive {
+		/* Hide scrollbar for Chrome, Safari and Opera */
+		.no-scrollbar::-webkit-scrollbar {
+				display: none;
+		}
+
+		/* Hide scrollbar for IE, Edge and Firefox */
+		.no-scrollbar {
+				-ms-overflow-style: none;  /* IE and Edge */
+				scrollbar-width: none;  /* Firefox */
+		}
+	}
+}

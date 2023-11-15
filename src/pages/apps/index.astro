@@ -1,0 +1,35 @@
+---
+import ProfileLayout from "../../layouts/ProfileLayout.astro";
+import AppsModule from "../../modules/AppsModule.svelte";
+import { verifyToken } from "../../utils/jwt";
+import { prisma } from "../../utils/prisma";
+
+// Get all apps from the database that this user is linked to
+const token = Astro.cookies.get("token");
+
+if (!token) {
+	return Astro.redirect("/login");
+}
+
+const result = verifyToken(token.value);
+
+if (!result) {
+	return Astro.redirect("/login");
+}
+
+const { id } = result;
+
+const connections = await prisma.appConnections.findMany({
+	where: {
+		user_id: id,
+	},
+	include: {
+		app: true,
+	},
+});
+
+---
+
+<ProfileLayout title="Apps">
+	<AppsModule connections={connections}></AppsModule>
+</ProfileLayout>

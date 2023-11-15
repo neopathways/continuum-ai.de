@@ -1,0 +1,48 @@
+---
+import Footer from "../components/Footer.svelte";
+import Header from "../components/Header.svelte";
+import "../style/global.scss";
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+import { verifyToken } from "../utils/jwt";
+import { prisma } from '../utils/prisma';
+
+// Check if the user is already logged in by looking at the "token" cookie
+// If the user is not logged in, redirect to the login page
+const token = Astro.cookies.get("token");
+
+if (token) {
+	const result = verifyToken(token.value);
+
+	if (result) {
+		var user = await prisma.user.findUnique({
+			where: {
+				email: result.email
+			},
+		});
+	}
+}
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+	<head>
+		<meta charset="UTF-8" />
+		
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+	</head>
+	<body class="w-screen h-screen overflow-hidden ">
+		<Header loggedIn={!!user} user={user} client:load></Header>
+		<main class="h-[calc(100vh-63px)] dark:bg-primary-900 overflow-y-auto">
+			<slot></slot>
+			<Footer ></Footer>
+		</main>
+	</body>
+</html>

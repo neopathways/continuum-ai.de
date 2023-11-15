@@ -1,0 +1,26 @@
+---
+import ProfileLayout from "../../layouts/ProfileLayout.astro";
+import { Heading, Card } from "flowbite-svelte"
+---
+
+<ProfileLayout title="Profile">
+	<Heading tag="h1" customSize="text-4xl font-semibold mb-4">Activity</Heading>
+	<div class="border px-8 py-5 rounded-md grid grid-cols-4 gap-8 border-primary-700">
+		<div>
+			<Heading color="alternative" tag="h4" class="text-lg text-secondary-500 font-semibold mb-1 tracking-normal">Total Users</Heading>
+			<span class="text-3xl font-medium font-mono text-secondary-800">0</span>
+		</div>
+		<div>
+			<Heading color="alternative" tag="h4" class="text-lg text-secondary-500 font-semibold mb-1 tracking-normal">Applications</Heading>
+			<span class="text-3xl font-medium font-mono text-secondary-800">0</span>
+		</div>
+		<div>
+			<Heading color="alternative" tag="h4" class="text-lg text-secondary-500 font-semibold mb-1 tracking-normal">APIs</Heading>
+			<span class="text-3xl font-medium font-mono text-secondary-800">0</span>
+		</div>
+		<div>
+			<Heading color="alternative" tag="h4" class="text-lg text-secondary-500 font-semibold mb-1 tracking-normal">Connections</Heading>
+			<span class="text-3xl font-medium font-mono text-secondary-800">0</span>
+		</div>
+	</div>
+</ProfileLayout>

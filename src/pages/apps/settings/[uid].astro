@@ -1,0 +1,56 @@
+---
+import ProfileLayout from "../../../layouts/ProfileLayout.astro";
+import AppsSettingsModule from "../../../modules/AppsSettingsModule.svelte";
+import { verifyToken } from "../../../utils/jwt";
+import { prisma } from "../../../utils/prisma";
+
+// Get all apps from the database that this user is linked to
+const token = Astro.cookies.get("token");
+const appUid = Astro.params.uid;
+
+if (!token) {
+	return Astro.redirect("/login");
+}
+
+if (!appUid) {
+	return Astro.redirect("/errors/invalid-link");
+}
+
+const result = verifyToken(token.value);
+
+if (!result) {
+	return Astro.redirect("/login");
+}
+
+const connection = await prisma.appConnections.findFirst({
+	where: {
+		user_id: result.id,
+		app: {
+			uid: appUid
+		}
+	},
+	include: {
+		app: true,
+		events: {
+			select: {
+				id: true,
+				created_at: true,
+				event_data: true,
+				event_type: true,
+			},
+			orderBy: {
+				created_at: "desc"
+			}
+		}
+	},
+});
+
+if (!connection) {
+	return Astro.redirect("/errors/invalid-link");
+}
+
+---
+
+<ProfileLayout title="Apps">
+	<AppsSettingsModule connection={connection} client:load></AppsSettingsModule>
+</ProfileLayout>

@@ -1,0 +1,60 @@
+---
+import { Section } from 'flowbite-svelte-blocks';
+import "../style/global.scss";
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+import { verifyToken } from "../utils/jwt";
+import { prisma } from '../utils/prisma';
+import ProfileHeader from '../components/ProfileHeader.svelte';
+import ProfileSidebar from '../components/ProfileSidebar.svelte';
+import ProfileContent from '../components/ProfileContent.svelte';
+
+// Check if the user is already logged in by looking at the "token" cookie
+// If the user is not logged in, redirect to the login page
+const token = Astro.cookies.get("token");
+
+if (token) {
+	const result = verifyToken(token.value);
+
+	if (!result) {
+		return Astro.redirect("/login");
+	}
+
+	var user = await prisma.user.findUnique({
+		where: {
+			email: result.email
+		},
+	});
+
+	if (!user) {
+		return Astro.redirect("/login");
+	}
+} else {
+	return Astro.redirect("/login");
+}
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+	<head>
+		<meta charset="UTF-8" />
+		
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+	</head>
+	<body class="w-screen h-screen overflow-hidden">
+		<ProfileHeader user={user} client:load></ProfileHeader>
+		<main class="h-[calc(100vh-63px)] grid grid-cols-[auto,1fr] dark:bg-primary-900">
+			<ProfileSidebar user={user} client:load></ProfileSidebar>
+			<ProfileContent client:load>
+				<slot></slot>
+			</ProfileContent>
+		</main>
+	</body>
+</html>

@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LoginModule from "../modules/LoginModule.svelte";
+import { verifyToken } from "../utils/jwt";
+
+// Check if the user is already logged in by looking at the "token" cookie
+// If the user is logged in, redirect to the profile page
+const token = Astro.cookies.get("token");
+
+if (token) {
+	const result = verifyToken(token.value);
+
+	if (result) {
+		return Astro.redirect("/profile");
+	}
+}
+---
+
+<Layout title="Login | Continuum">
+	<LoginModule client:load></LoginModule>
+</Layout>

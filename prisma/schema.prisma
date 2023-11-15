@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             Int              @id @default(autoincrement())
+  uid            String           @unique @default("")
+  email          String           @unique
+  password       String
+  first_name     String
+  last_name      String
+  avatar_url     String?
+  // Address          
+  country        String?
+  city           String?
+  zip            String?
+  street         String?
+  // Additional Details
+  phone          String?
+  website        String?
+  company        String?
+  about          String?
+  created_at     DateTime         @default(now())
+  updated_at     DateTime         @default(now()) @updatedAt
+  // Services
+  apps           Apps[]
+  AppConnections AppConnections[]
+}
+
+model Apps {
+  id             Int              @id @default(autoincrement())
+  name           String
+  description    String
+  url            String
+  redirect_uri   String           @default("")
+  banner_url     String?
+  icon_url       String?
+  uid            String           @unique @default("")
+  user_id        Int
+  user           User             @relation(fields: [user_id], references: [id])
+  AppConnections AppConnections[]
+}
+
+model AppConnections {
+  id      Int  @id @default(autoincrement())
+  app     Apps @relation(fields: [app_id], references: [id])
+  app_id  Int
+  user    User @relation(fields: [user_id], references: [id])
+  user_id Int
+	created_at DateTime @default(now())
+	events ConnectionEvents[]
+  //scopes	String[] @default([])
+}
+
+model ConnectionEvents {
+	id      Int  @id @default(autoincrement())
+	connection_id Int
+	connection AppConnections @relation(fields: [connection_id], references: [id])
+	event_type String
+	// NOTE: Should be json
+	event_data String
+	created_at DateTime @default(now())
+}
