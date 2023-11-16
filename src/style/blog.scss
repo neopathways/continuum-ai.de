@@ -36,7 +36,9 @@ article {
 	}
 
 	pre {
-		@apply mb-4 overflow-auto no-scrollbar rounded-md bg-gray-700 p-4;
+		@apply mb-4 overflow-auto rounded-md bg-gray-700 p-4;
+		-ms-overflow-style: none;  /* IE and Edge */
+		scrollbar-width: none;  /* Firefox */
 	}
 
 	table {

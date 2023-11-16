@@ -3,7 +3,7 @@ import * as Z from "zod";
 import {prisma} from "../../utils/prisma";
 import crypto from "crypto"
 import { error, success } from "../../utils/Response";
-import avatarGenerator from 'animal-avatar-generator'
+import { Avatar, AvatarType } from "@continuum-ai/avatars"
 import * as fs from "fs"
 import { v4 as uuidv4 } from 'uuid';
 import { PERSISTENT_DIR } from "../../lib/constants";
@@ -43,11 +43,12 @@ export const POST: APIRoute = async function({ request }) {
 	const uid = uuidv4()
 
 	// Generate a unique robot avatar
-	const avatar = avatarGenerator(email, { size: 200 })
+	const avatar = await Avatar.assemble(email, AvatarType.Robots, null)
+	const buffer = await avatar.toBuffer()
 	// This will generate an svg animal that we can easily write to disk
-	const outputPath = path.join(PERSISTENT_DIR, "profile-images", `${uid}.svg`)
+	const outputPath = path.join(PERSISTENT_DIR, "profile-images", `${uid}.jpeg`)
 
-	fs.writeFileSync(outputPath, avatar);
+	fs.writeFileSync(outputPath, buffer);
 
 
 	const newUser = await prisma.user.create({
@@ -57,7 +58,7 @@ export const POST: APIRoute = async function({ request }) {
 			password: passwordHash,
 			first_name,
 			last_name,
-			avatar_url: `/api/user/${uid}/avatar.svg`
+			avatar_url: `/api/user/${uid}/avatar.jpeg`
 		}
 	})
 
