@@ -37,6 +37,7 @@ const connection = await prisma.appConnections.findFirst({
 				created_at: true,
 				event_data: true,
 				event_type: true,
+				connection_id: true
 			},
 			orderBy: {
 				created_at: "desc"

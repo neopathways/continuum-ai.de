@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.text-gradient {
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
 @layer base {
   :root {
     color: var(--color-primary-500);

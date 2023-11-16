@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type * as Prisma from '@prisma/client';
 	import { Checkbox, Modal, Tooltip } from 'flowbite-svelte';
-  import { Section, Faq, FaqItem } from 'flowbite-svelte-blocks';
 	import { Timeline, TimelineItem, Button } from 'flowbite-svelte';
 	import { ArrowRightOutline } from 'flowbite-svelte-icons';
 	import moment from 'moment';
@@ -89,31 +88,4 @@
 			</div>
 		</Modal>
 	</div>
-	
-
-	<Section name="faq">
-		<h2 class="mb-8 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Frequently asked questions</h2>
-		<Faq divClass="grid grid-cols-2 gap-4">
-			<div>
-				<FaqItem>
-					<svelte:fragment slot="h3">What is "Cross-Access"?</svelte:fragment>
-					<p class="text-gray-500 dark:text-gray-400">Cross-access within third-party OAuth is all about fostering collaboration among different applications or services, enabling one OAuth client (the "requesting client") to access a user's resources hosted by another OAuth client (the "resource client") with the user's consent. It's like teamwork for your apps! Of course, ensuring security and privacy is crucial, so proper configuration and trust relationships between OAuth clients are essential.</p>
-				</FaqItem>
-			</div>
-			<div>
-				<FaqItem>
-					<svelte:fragment slot="h3">What does Continuum-AI do with my data?</svelte:fragment>
-					<p class="text-gray-500 dark:text-gray-400">
-						At Continuum-AI, we are committed to safeguarding your data privacy. We never share your data without your explicit consent, and we do not engage in selling your information to third parties. We prioritize transparency in our data handling practices, and our open-source nature allows you to review and verify our policies. Rest assured, your data is secure, and you retain ownership and control over it.
-					</p>
-				</FaqItem>
-				<FaqItem>
-					<svelte:fragment slot="h3">How do you collect data?</svelte:fragment>
-					<p class="text-gray-500 dark:text-gray-400">
-						We collect data through a combination of methods to enhance your data protection and privacy. When you grant consent for third-party applications to access your data, we facilitate secure collaboration with these applications, ensuring that data sharing is controlled and transparent. Additionally, to empower you with insights into your data's security, we employ web scraping techniques to identify traces of your data on the web. This allows us to notify you if your data has been leaked or compromised, giving you valuable information to safeguard your online presence.
-					</p>
-				</FaqItem>
-			</div>
-		</Faq>
-	</Section>
 </div>

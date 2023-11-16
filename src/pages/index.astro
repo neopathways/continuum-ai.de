@@ -1,62 +1,64 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-import { Section, HeroHeader, PricingBodyHead, PricingCard, PricingHead, PricingItem, PricingItemWrapper, Newsletter, Faq, FaqItem, FeatureDefault, FeatureItem, Social, ArticleAuthor, ArticleBody, ArticleHead, ArticleWrapper, BlogBodyWrapper, BlogHead, ContentWithImage, Content, Cta, Quotes, Testimonial } from 'flowbite-svelte-blocks';
+import { Section, HeroHeader, Newsletter, Faq, FaqItem, FeatureDefault, FeatureItem, Social, ArticleAuthor, ArticleBody, ArticleHead, ArticleWrapper, BlogBodyWrapper, BlogHead, Testimonial } from 'flowbite-svelte-blocks';
 import { Button, Input, Label } from 'flowbite-svelte';
-import { ArrowRightOutline, ArrowRightSolid, BriefcaseSolid, ChartSolid, ChevronRightSolid, CogOutline, DollarSolid, EnvelopeSolid, LandmarkSolid, NewspaperSolid, RocketSolid, VideoSolid } from 'flowbite-svelte-icons';
-import { getUser } from "../utils/user";
+import { ArrowRightOutline, ArrowRightSolid, EnvelopeSolid, NewspaperSolid, VideoSolid } from 'flowbite-svelte-icons';
+import { FileText, Globe, Link2, MixerHorizontal, Person, Share1 } from "svelte-radix";
 ---
 
 <Layout title="Continuum">
-	<div class="grid grid-cols-12 mx-auto max-w-screen-xl py-24">
+	<div class="grid grid-cols-7 lg:grid-cols-12 mx-auto max-w-screen-xl py-24">
 		<div class="mr-auto place-self-center col-span-7">
 			<HeroHeader h1Class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white" pClass="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-				<svelte:fragment slot="h1" class="text-gray-900 dark:text-gray-50">Open data aggregation tools for anyone</svelte:fragment>
-				<svelte:fragment slot="paragraph">From checkout to global sales tax compliance, companies around the world use Flowbite to simplify their payment stack.</svelte:fragment>
-				<a href="/"><Button size="xl" color="purple" class="inline-flex items-center justify-center mr-3">Get started<ArrowRightSolid size="md" class="ml-2 -mr-1" /></Button> </a>
-				<a href="/"><Button color="dark" size="xl" class="inline-flex items-center justify-center">Speak to Sales</Button> </a>
+				<svelte:fragment slot="h1" class="bg-gradient-to-r text-gradient from-purple-800 to-cyan-600 dark:from-purple-500 dark:to-cyan-300">Unlock the Power of Data</svelte:fragment>
+				<svelte:fragment slot="paragraph">Sign up today to connect your favorite applications securely and unlock the potential of your data. With our web scraping capabilities, we deliver personalized insights to enhance your experience. </svelte:fragment>
+				<div class="flex flex-col sm:flex-row gap-2">
+					<Button href="/signup" size="xl" color="purple" class="inline-flex items-center justify-center mr-3">Get started<ArrowRightSolid size="md" class="ml-2 -mr-1" /></Button>
+					<Button href="/docs" color="dark" size="xl" class="inline-flex items-center justify-center">Explore the docs</Button>
+				</div>
 			</HeroHeader>
 		</div>
 		<div class="hidden lg:mt-0 col-span-5 lg:flex">
-			<img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png" alt="mockup" />
+			<img src="/images/data-extraction-illustration.svg" alt="mockup" />
 		</div>
 	</div>
 
 	<Section name="feature">
 		<HeroHeader class="max-w-screen-md mb-8 lg:mb-16" h2Class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white" pClass="text-gray-500 sm:text-xl dark:text-gray-400">
-			<svelte:fragment slot="h2">Designed for business teams like yours</svelte:fragment>
-			<svelte:fragment slot="paragraph">Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</svelte:fragment>
+			<svelte:fragment slot="h2">Elevate Your Data Strategy</svelte:fragment>
+			<svelte:fragment slot="paragraph">Harness the power of data like never before. Our platform puts you in control, allowing you to shape your data landscape and drive better decisions. Unleash the potential of your information with us.</svelte:fragment>
 		</HeroHeader>
-		<FeatureDefault>
+		<FeatureDefault class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 			<FeatureItem>
-				<svelte:fragment slot="icon"><ChartSolid class="text-primary-600 dark:text-primary-300" /></svelte:fragment>
-				<svelte:fragment slot="h3">Marketing</svelte:fragment>
-				<svelte:fragment slot="paragraph">Plan it, create it, launch it. Collaborate seamlessly with all the organization and hit your marketing goals every month with our marketing plan.</svelte:fragment>
+				<svelte:fragment slot="icon"><Link2 class="text-primary-600 dark:text-primary-300" /></svelte:fragment>
+				<svelte:fragment slot="h3">Connect</svelte:fragment>
+				<svelte:fragment slot="paragraph">Connect your apps seamlessly through OAuth for effortless data sharing. Say goodbye to data silos and hello to streamlined workflows.</svelte:fragment>
 			</FeatureItem>
 			<FeatureItem>
-				<svelte:fragment slot="icon"><LandmarkSolid class="text-primary-600 dark:text-primary-300" /></svelte:fragment>
-				<svelte:fragment slot="h3">Legal</svelte:fragment>
-				<svelte:fragment slot="paragraph">Protect your organization, devices and stay compliant with our structured workflows and custom permissions made for you.</svelte:fragment>
+				<svelte:fragment slot="icon"><Globe class="text-primary-600 dark:text-primary-300" /></svelte:fragment>
+				<svelte:fragment slot="h3">Aggregate</svelte:fragment>
+				<svelte:fragment slot="paragraph">Aggregate data from diverse sources into a single, user-friendly platform. Consolidate your information for better decision-making.</svelte:fragment>
 			</FeatureItem>
 			<FeatureItem>
-				<svelte:fragment slot="icon"><BriefcaseSolid class="text-primary-600 dark:text-primary-300" /></svelte:fragment>
-				<svelte:fragment slot="h3">Business Automation</svelte:fragment>
-				<svelte:fragment slot="paragraph">Auto-assign tasks, send Slack messages, and much more. Now power up with hundreds of new templates to help you get started.</svelte:fragment>
+				<svelte:fragment slot="icon"><FileText class="text-primary-600 dark:text-primary-300" /></svelte:fragment>
+				<svelte:fragment slot="h3">Insights</svelte:fragment>
+				<svelte:fragment slot="paragraph">Gain valuable insights with our web scraping technology. Stay informed and make data-driven decisions in real-time.</svelte:fragment>
 			</FeatureItem>
 			<FeatureItem>
-				<svelte:fragment slot="icon"><DollarSolid class="text-primary-600 dark:text-primary-300" /></svelte:fragment>
-				<svelte:fragment slot="h3">Finance</svelte:fragment>
-				<svelte:fragment slot="paragraph">Audit-proof software built for critical financial operations like month-end close and quarterly budgeting.</svelte:fragment>
+				<svelte:fragment slot="icon"><MixerHorizontal class="text-primary-600 dark:text-primary-300" /></svelte:fragment>
+				<svelte:fragment slot="h3">Fine-Grained Control</svelte:fragment>
+				<svelte:fragment slot="paragraph">Customize your data connections with precision. With our platform, you have the power to adjust settings for each connection in extreme detail. Tailor your data-sharing experience exactly the way you want it.</svelte:fragment>
 			</FeatureItem>
 			<FeatureItem>
-				<svelte:fragment slot="icon"><RocketSolid class="text-primary-600 dark:text-primary-300" /></svelte:fragment>
-				<svelte:fragment slot="h3">Enterprise Design</svelte:fragment>
-				<svelte:fragment slot="paragraph">Craft beautiful, delightful experiences for both marketing and product with real cross-company collaboration.</svelte:fragment>
+				<svelte:fragment slot="icon"><Share1 class="text-primary-600 dark:text-primary-300" /></svelte:fragment>
+				<svelte:fragment slot="h3">Third-Party Integration</svelte:fragment>
+				<svelte:fragment slot="paragraph">Easily integrate third-party services into your business workflows. With our login provider capabilities, you can centralize access control and simplify user management for a seamless experience.</svelte:fragment>
 			</FeatureItem>
 			<FeatureItem>
-				<svelte:fragment slot="icon"><CogOutline class="text-primary-600 dark:text-primary-300" /></svelte:fragment>
-				<svelte:fragment slot="h3">Operations</svelte:fragment>
-				<svelte:fragment slot="paragraph">Keep your company’s lights on with customizable, iterative, and structured workflows built for all efficient teams and individual.</svelte:fragment>
+				<svelte:fragment slot="icon"><Person class="text-primary-600 dark:text-primary-300" /></svelte:fragment>
+				<svelte:fragment slot="h3">Identity Management</svelte:fragment>
+				<svelte:fragment slot="paragraph">Take control of user identities and access rights with our robust identity management tools. As a login provider, we empower businesses to efficiently manage user access and permissions, enhancing security and compliance.</svelte:fragment>
 			</FeatureItem>
 		</FeatureDefault>
 	</Section>
@@ -159,14 +161,11 @@ import { getUser } from "../utils/user";
 					</svelte:fragment>
 				</ArticleBody>
 				<ArticleAuthor>
-					<svelte:fragment slot="author">
+					<svelte:fragment slot="author" class="flex gap-4 items-center">
 						<img class="w-7 h-7 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Jese Leos avatar" />
 						<span class="font-medium dark:text-white"> Jese Leos </span>
 					</svelte:fragment>
-					<a href="/" class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
-						Read more
-						<ArrowRightOutline size="sm" class="ml-2" />
-					</a>
+					<Button color="purple">Read more <ArrowRightOutline size="sm" class="ml-2" /></Button>
 				</ArticleAuthor>
 			</ArticleWrapper>
 	
@@ -185,33 +184,18 @@ import { getUser } from "../utils/user";
 					</svelte:fragment>
 				</ArticleBody>
 				<ArticleAuthor>
-					<svelte:fragment slot="author">
+					<svelte:fragment slot="author" class="flex gap-4 items-center">
 						<img class="w-7 h-7 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png" alt="Bonnie Green avatar" />
 						<span class="font-medium dark:text-white"> Bonnie Green </span>
 					</svelte:fragment>
-					<a href="/" class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
-						Read more
-						<ArrowRightOutline size="sm" class="ml-2" />
-					</a>
+					<Button color="purple">Read more <ArrowRightOutline size="sm" class="ml-2" /></Button>
 				</ArticleAuthor>
 			</ArticleWrapper>
 		</BlogBodyWrapper>
 	</Section>
 
-	<Section name="content">
-		<Content>
-			<svelte:fragment slot="h2">Powering innovation at 200,000+ companies worldwide</svelte:fragment>
-			<p class="mb-4 font-light">Track work across the enterprise through an open, collaborative platform. Link issues across Jira and ingest data from other software development tools, so your IT support and operations teams have richer contextual information to rapidly respond to requests, incidents, and changes.</p>
-			<p class="mb-4 font-medium">Deliver great service experiences fast - without the complexity of traditional ITSM solutions.Accelerate critical development work, eliminate toil, and deploy changes with ease.</p>
-			<a href="/" class="inline-flex items-center font-medium text-primary-600 hover:text-primary-800 dark:text-primary-500 dark:hover:text-primary-700">
-				Learn more
-				<ChevronRightSolid class="ml-2" size="xs" />
-			</a>
-		</Content>
-	</Section>
-
 	<Section name="testimonial">
-		<Testimonial icon={Quotes}>
+		<Testimonial>
 			<blockquote>
 				<p class="text-2xl font-medium text-gray-900 dark:text-white">"Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to complex dashboard. Perfect choice for your next SaaS application."</p>
 			</blockquote>

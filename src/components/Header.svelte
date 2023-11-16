@@ -45,7 +45,7 @@
 		<div class="flex items-center lg:order-2 gap-4">
 			<DarkMode btnClass="text-gray-50 dark:text-gray-50 hover:bg-gray-700 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-600 dark:focus:ring-gray-600 rounded-lg text-sm p-2.5"></DarkMode>
 			{#if loggedIn}
-			<Avatar id="user-drop" src={user.avatar_url} class="cursor-pointer" dot={{ color: 'green' }} />
+			<Avatar id="user-drop" src={user.avatar_url || undefined} class="cursor-pointer" dot={{ color: 'green' }} />
 			<Dropdown class="!bg-gray-800 !border-gray-700 border rounded-md z-50" triggeredBy="#user-drop">
 				<DropdownHeader>
 					<span class="block text-sm">{user.first_name} {user.last_name}</span>
@@ -77,6 +77,7 @@
 			<NavLi nonActiveClass="text-gray-50" href="/team">Team</NavLi>
 			<NavLi nonActiveClass="text-gray-50" href="/contact">Contact</NavLi>
 			<NavLi nonActiveClass="text-gray-50" href="/pricing">Pricing</NavLi>
+			<NavLi nonActiveClass="text-gray-50" href="/docs">Docs</NavLi>
 			<NavLi nonActiveClass="text-gray-50" class="cursor-pointer">
 				Tools<ChevronDownOutline
 					class="w-3 h-3 ml-2 text-primary-800 dark:text-white inline"

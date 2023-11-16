@@ -1,0 +1,157 @@
+---
+import { Label, Input, Button } from "flowbite-svelte";
+import { ArticleAuthor, ArticleBody, ArticleHead, ArticleWrapper, BlogBodyWrapper, BlogHead, Newsletter } from "flowbite-svelte-blocks";
+import { ArrowRightOutline, EnvelopeSolid, NewspaperSolid } from "flowbite-svelte-icons";
+import { Section } from "svelte-radix";
+import Footer from "../components/Footer.svelte";
+import Header from "../components/Header.svelte";
+import BlogTemplate from "../components/BlogTemplate.svelte";
+import "../style/global.scss";
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+import { verifyToken } from "../utils/jwt";
+import { prisma } from '../utils/prisma';
+
+// Check if the user is already logged in by looking at the "token" cookie
+// If the user is not logged in, redirect to the login page
+const token = Astro.cookies.get("token");
+
+let user;
+if (token) {
+	const result = verifyToken(token.value);
+
+	if (result) {
+		user = await prisma.user.findUnique({
+			where: {
+				email: result.email
+			},
+		});
+	}
+}
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+	<head>
+		<meta charset="UTF-8" />
+		
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+	</head>
+	<body class="w-screen h-screen overflow-hidden ">
+		<Header loggedIn={!!user} user={user} client:load></Header>
+		<main class="h-[calc(100vh-63px)] dark:bg-primary-900 overflow-y-auto">
+			<div class="px-4">
+				<BlogTemplate></BlogTemplate>
+				<Section name="content">
+					<BlogHead>
+						<svelte:fragment slot="h2">Related</svelte:fragment>
+						<svelte:fragment slot="paragraph">
+							<p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">We use an agile approach to test assumptions and connect with the needs of your audience early and often.</p>
+						</svelte:fragment>
+					</BlogHead>
+					<BlogBodyWrapper class="grid grid-cols-3">
+						<ArticleWrapper>
+							<ArticleHead>
+								<span class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+									
+									Tutorial
+								</span>
+								<span class="text-sm">14 days ago</span>
+							</ArticleHead>
+							<ArticleBody>
+								<svelte:fragment slot="h2"><a href="/">How to quickly deploy a static website</a></svelte:fragment>
+								<svelte:fragment slot="paragraph">
+									<p class="mb-5 font-light text-gray-500 dark:text-gray-400">Static websites are now used to bootstrap lots of websites and are becoming the basis for a variety of tools that even influence both web designers and developers influence both web designers and developers.</p>
+								</svelte:fragment>
+							</ArticleBody>
+							<ArticleAuthor>
+								<svelte:fragment slot="author">
+									<img class="w-7 h-7 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Jese Leos avatar" />
+									<span class="font-medium dark:text-white"> Jese Leos </span>
+								</svelte:fragment>
+								<Button color="purple">Read more <ArrowRightOutline size="sm" class="ml-2" /></Button>
+							</ArticleAuthor>
+						</ArticleWrapper>
+				
+						<ArticleWrapper>
+							<ArticleHead>
+								<span class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+									<NewspaperSolid size="xs" class="mr-1" />
+									Article
+								</span>
+								<span class="text-sm">14 days ago</span>
+							</ArticleHead>
+							<ArticleBody>
+								<svelte:fragment slot="h2"><a href="/">Our first project with React</a></svelte:fragment>
+								<svelte:fragment slot="paragraph">
+									<p class="mb-5 font-light text-gray-500 dark:text-gray-400">Static websites are now used to bootstrap lots of websites and are becoming the basis for a variety of tools that even influence both web designers and developers influence both web designers and developers.</p>
+								</svelte:fragment>
+							</ArticleBody>
+							<ArticleAuthor>
+								<svelte:fragment slot="author">
+									<img class="w-7 h-7 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png" alt="Bonnie Green avatar" />
+									<span class="font-medium dark:text-white"> Bonnie Green </span>
+								</svelte:fragment>
+								<Button color="purple">Read more <ArrowRightOutline size="sm" class="ml-2" /></Button>
+							</ArticleAuthor>
+						</ArticleWrapper>
+				
+						<ArticleWrapper>
+							<ArticleHead>
+								<span class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+									<NewspaperSolid size="xs" class="mr-1" />
+									Article
+								</span>
+								<span class="text-sm">14 days ago</span>
+							</ArticleHead>
+							<ArticleBody>
+								<svelte:fragment slot="h2"><a href="/">Our first project with React</a></svelte:fragment>
+								<svelte:fragment slot="paragraph">
+									<p class="mb-5 font-light text-gray-500 dark:text-gray-400">Static websites are now used to bootstrap lots of websites and are becoming the basis for a variety of tools that even influence both web designers and developers influence both web designers and developers.</p>
+								</svelte:fragment>
+							</ArticleBody>
+							<ArticleAuthor>
+								<svelte:fragment slot="author">
+									<img class="w-7 h-7 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png" alt="Bonnie Green avatar" />
+									<span class="font-medium dark:text-white"> Bonnie Green </span>
+								</svelte:fragment>
+								<Button color="purple">Read more <ArrowRightOutline size="sm" class="ml-2" /></Button>
+							</ArticleAuthor>
+						</ArticleWrapper>
+					</BlogBodyWrapper>
+				</Section>
+				<Section>
+					<Newsletter>
+						<svelte:fragment slot="h2">Sign up for our newsletter</svelte:fragment>
+						<p class="mx-auto mb-8 max-w-2xl font-light text-gray-500 md:mb-12 sm:text-xl dark:text-gray-400">Stay up to date with the roadmap progress, announcements and exclusive discounts feel free to sign up with your email.</p>
+						<form action="/">
+							<div class="items-center mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex sm:space-y-0">
+								<div class="relative w-full">
+									<Label class="hidden">Email address</Label>
+									<Input id="email" type="email" placeholder="Enter your email" size="md" class="block p-3 pl-10 w-full text-sm rounded-lg border border-gray-300 sm:rounded-none sm:rounded-l-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+										<EnvelopeSolid slot="left" size="sm" class="text-gray-500 dark:text-gray-400 ml-2" />
+									</Input>
+								</div>
+								<div>
+									<Button type="submit" class="py-3 px-5 w-full text-sm font-medium text-center text-white rounded-lg border cursor-pointer border-primary-600 sm:rounded-none sm:rounded-r-lg focus:ring-4  dark:focus:ring-primary-800">Subscribe</Button>
+								</div>
+							</div>
+							<div class="mx-auto max-w-screen-sm text-sm text-left text-gray-500 newsletter-form-footer dark:text-gray-300">
+								We care about the protection of your data. <a href="/" class="font-medium text-primary-600 dark:text-primary-500 hover:underline">Read our Privacy Policy</a>.
+							</div>
+						</form>
+					</Newsletter>
+				</Section>
+			</div>
+			<Footer ></Footer>
+		</main>
+		
+	</body>
+</html>

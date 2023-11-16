@@ -1,4 +1,5 @@
 ---
+import DocsHeader from "../components/DocsHeader.svelte";
 import Footer from "../components/Footer.svelte";
 import Header from "../components/Header.svelte";
 import "../style/global.scss";
@@ -39,7 +40,7 @@ if (token) {
 		<title>{title}</title>
 	</head>
 	<body class="w-screen h-screen overflow-hidden ">
-		<Header loggedIn={!!user} user={user} client:load></Header>
+		<DocsHeader client:load></DocsHeader>
 		<main class="h-[calc(100vh-63px)] dark:bg-primary-900 overflow-y-auto">
 			<div class="px-4">
 				<slot></slot>

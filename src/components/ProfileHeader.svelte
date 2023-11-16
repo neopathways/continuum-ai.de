@@ -32,17 +32,17 @@
 		</NavBrand>
 		<div class="flex items-center gap-4 lg:order-2">
 			<DarkMode></DarkMode>
-			<Button color="light" href="/docs">Documentation</Button>
-			<Button color="alternative" class="border-none text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5" type="button"><BellOutline size="md" class="text-gray-600"></BellOutline></Button>
+			<Button color="dark" href="/docs">Documentation</Button>
+			<Button color="dark" type="button"><BellOutline size="md" class="text-gray-50"></BellOutline></Button>
 			
-			<Avatar id="user-drop" src={user.avatar_url} class="cursor-pointer" dot={{ color: 'green' }} />
+			<Avatar id="user-drop" src={user.avatar_url || undefined} class="cursor-pointer" dot={{ color: 'green' }} />
 			<Dropdown triggeredBy="#user-drop">
 				<DropdownHeader>
 					<span class="block text-sm">{user.first_name} {user.last_name}</span>
 					<span class="block truncate text-sm font-medium">{user.email}</span>
 				</DropdownHeader>
 				<DropdownItem href="/profile">Profile</DropdownItem>
-				<DropdownItem href="/settings">Settings</DropdownItem>
+				<DropdownItem href="/profile/settings">Settings</DropdownItem>
 				<DropdownItem href="/apps">Apps</DropdownItem>
 				<DropdownDivider />
 				<DropdownItem href="/logout">Sign out</DropdownItem>
