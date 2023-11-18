@@ -1,0 +1,211 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+
+import { Section, HeroHeader, Newsletter, Faq, FaqItem, FeatureDefault, Social, ArticleAuthor, ArticleBody, ArticleHead, ArticleWrapper, BlogBodyWrapper, BlogHead, Testimonial } from 'flowbite-svelte-blocks';
+import { Button, Input, Label } from 'flowbite-svelte';
+import { ArrowRightOutline, ArrowRightSolid, EnvelopeSolid, NewspaperSolid, VideoSolid } from 'flowbite-svelte-icons';
+---
+
+<Layout title="Continuum">
+	<div class="grid grid-cols-7 lg:grid-cols-12 mx-auto max-w-screen-xl py-24">
+		<div class="mr-auto place-self-center col-span-7">
+			<HeroHeader h1Class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white" pClass="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+				<svelte:fragment slot="h1" class="bg-gradient-to-r text-gradient from-purple-800 to-cyan-600 dark:from-purple-500 dark:to-cyan-300">Generate Unique Avatars for your users</svelte:fragment>
+				<svelte:fragment slot="paragraph">Sign up today to connect your favorite applications securely and unlock the potential of your data. With our web scraping capabilities, we deliver personalized insights to enhance your experience. </svelte:fragment>
+				<div class="flex flex-col sm:flex-row gap-2">
+					<Button href="/signup" size="xl" color="purple" class="inline-flex items-center justify-center mr-3">Get started<ArrowRightSolid size="md" class="ml-2 -mr-1" /></Button>
+					<Button href="/docs" color="dark" size="xl" class="inline-flex items-center justify-center">Explore the docs</Button>
+				</div>
+			</HeroHeader>
+		</div>
+		<div class="hidden lg:mt-0 col-span-5 lg:flex">
+			<img src="/images/continuum-avatars-logo.jpeg" class="rounded-full" alt="Robot Image" />
+		</div>
+	</div>
+
+	<Section name="feature">
+		<HeroHeader class="max-w-screen-md mb-8 lg:mb-16" h2Class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white" pClass="text-gray-500 sm:text-xl dark:text-gray-400">
+			<svelte:fragment slot="h2">Elevate Your Data Strategy</svelte:fragment>
+			<svelte:fragment slot="paragraph">Harness the power of data like never before. Our platform puts you in control, allowing you to shape your data landscape and drive better decisions. Unleash the potential of your information with us.</svelte:fragment>
+		</HeroHeader>
+		<FeatureDefault divClass="" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+			<img src="/images/avatar-cat.png" class="rounded-full" alt="Cat Image" />
+			<img src="/images/avatar-head.png" class="rounded-full" alt="Head Image" />
+			<img src="/images/avatar-human.png" class="rounded-full" alt="Human Image" />
+			<img src="/images/avatar-monster.png" class="rounded-full" alt="Monster Image" />
+			<img src="/images/avatar-robot.png" class="rounded-full" alt="Robot Image" />
+			<img src="/images/avatar-monster-2.png" class="rounded-full" alt="Monster Image" />
+			<img src="/images/avatar-robot-2.png" class="rounded-full" alt="Robot Image" />
+			<img src="/images/avatar-monster-3.png" class="rounded-full" alt="Monster Image" />
+		</FeatureDefault>
+	</Section>
+
+	<Section name="social">
+		<Social dlClass="flex flex-row gap-24 justify-center">
+			<div class="flex flex-col items-center justify-center">
+				<dt class="mb-2 text-3xl md:text-4xl font-extrabold">73M+</dt>
+				<dd class="font-light text-gray-500 dark:text-gray-400">developers</dd>
+			</div>
+			<div class="flex flex-col items-center justify-center">
+				<dt class="mb-2 text-3xl md:text-4xl font-extrabold">1B+</dt>
+				<dd class="font-light text-gray-500 dark:text-gray-400">contributors</dd>
+			</div>
+			<div class="flex flex-col items-center justify-center">
+				<dt class="mb-2 text-3xl md:text-4xl font-extrabold">4M+</dt>
+				<dd class="font-light text-gray-500 dark:text-gray-400">organizations</dd>
+			</div>
+		</Social>
+	</Section>
+
+	<Section name="faq">
+		<h2 class="mb-8 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Frequently asked questions</h2>
+		<Faq divClass="grid grid-cols-2 gap-4">
+			<div>
+				<FaqItem>
+					<svelte:fragment slot="h3">What do you mean by "Figma assets"?</svelte:fragment>
+					<p class="text-gray-500 dark:text-gray-400">You will have access to download the full Figma project including all of the pages, the components, responsive pages, and also the icons, illustrations, and images included in the screens.</p>
+				</FaqItem>
+				<FaqItem>
+					<svelte:fragment slot="h3">What does "lifetime access" exactly mean?</svelte:fragment>
+					<p class="text-gray-500 dark:text-gray-400">Once you have purchased either the design, code, or both packages, you will have access to all of the future updates based on the roadmap, free of charge.</p>
+				</FaqItem>
+				<FaqItem>
+					<svelte:fragment slot="h3">How does support work?</svelte:fragment>
+					<p class="text-gray-500 dark:text-gray-400">We're aware of the importance of well qualified support, that is why we decided that support will only be provided by the authors that actually worked on this project.</p>
+					<p class="text-gray-500 dark:text-gray-400">
+						Feel free to <a href="/" class="font-medium underline text-primary-600 dark:text-primary-500 hover:no-underline" target="_blank" rel="noreferrer">contact us</a> and we'll help you out as soon as we can.
+					</p>
+				</FaqItem>
+				<FaqItem>
+					<svelte:fragment slot="h3">I want to build more than one project. Is that allowed?</svelte:fragment>
+					<p class="text-gray-500 dark:text-gray-400">You can use Windster for an unlimited amount of projects, whether it's a personal website, a SaaS app, or a website for a client. As long as you don't build a product that will directly compete with Windster either as a UI kit, theme, or template, it's fine.</p>
+					<p class="text-gray-500 dark:text-gray-400">
+						Find out more information by <a href="/" class="font-medium underline text-primary-600 dark:text-primary-500 hover:no-underline">reading the license</a>.
+					</p>
+				</FaqItem>
+			</div>
+			<div>
+				<FaqItem>
+					<svelte:fragment slot="h3">What does "free updates" include?</svelte:fragment>
+					<p class="text-gray-500 dark:text-gray-400">
+						The free updates that will be provided is based on the <a href="/" class="font-medium underline text-primary-600 dark:text-primary-500 hover:no-underline">roadmap</a> that we have laid out for this project. It is also possible that we will provide extra updates outside of the roadmap as well.
+					</p>
+				</FaqItem>
+				<FaqItem>
+					<svelte:fragment slot="h3">What does the free version include?</svelte:fragment>
+					<p class="text-gray-500 dark:text-gray-400">
+						The <a href="/" class="font-medium underline text-primary-600 dark:text-primary-500 hover:no-underline">free version</a> of Windster includes a minimal style guidelines, component variants, and a dashboard page with the mobile version alongside it.
+					</p>
+					<p class="text-gray-500 dark:text-gray-400">You can use this version for any purposes, because it is open-source under the MIT license.</p>
+				</FaqItem>
+				<FaqItem>
+					<svelte:fragment slot="h3">What is the difference between Windster and Tailwind UI?</svelte:fragment>
+					<p class="text-gray-500 dark:text-gray-400">Although both Windster and Tailwind UI are built for integration with Tailwind CSS, the main difference is in the design, the pages, the extra components and UI elements that Windster includes.</p>
+					<p class="text-gray-500 dark:text-gray-400">Additionally, Windster is a project that is still in development, and later it will include both the application, marketing, and e-commerce UI interfaces.</p>
+				</FaqItem>
+				<FaqItem>
+					<svelte:fragment slot="h3">Can I use Windster in open-source projects?</svelte:fragment>
+					<p class="text-gray-500 dark:text-gray-400">Generally, it is accepted to use Windster in open-source projects, as long as it is not a UI library, a theme, a template, a page-builder that would be considered as an alternative to Windster itself.</p>
+					<p class="text-gray-500 dark:text-gray-400">With that being said, feel free to use this design kit for your open-source projects.</p>
+					<p class="text-gray-500 dark:text-gray-400">
+						Find out more information by <a href="/" class="font-medium underline text-primary-600 dark:text-primary-500 hover:no-underline">reading the license</a>.
+					</p>
+				</FaqItem>
+			</div>
+		</Faq>
+	</Section>
+
+	<Section name="blog">
+		<BlogHead>
+			<svelte:fragment slot="h2">Our Blog</svelte:fragment>
+			<svelte:fragment slot="paragraph">
+				<p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">We use an agile approach to test assumptions and connect with the needs of your audience early and often.</p>
+			</svelte:fragment>
+		</BlogHead>
+		<BlogBodyWrapper class="grid grid-cols-2">
+			<ArticleWrapper>
+				<ArticleHead>
+					<span class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+						<VideoSolid size="xs" class="mr-1" />
+						Tutorial
+					</span>
+					<span class="text-sm">14 days ago</span>
+				</ArticleHead>
+				<ArticleBody>
+					<svelte:fragment slot="h2"><a href="/">How to quickly deploy a static website</a></svelte:fragment>
+					<svelte:fragment slot="paragraph">
+						<p class="mb-5 font-light text-gray-500 dark:text-gray-400">Static websites are now used to bootstrap lots of websites and are becoming the basis for a variety of tools that even influence both web designers and developers influence both web designers and developers.</p>
+					</svelte:fragment>
+				</ArticleBody>
+				<ArticleAuthor>
+					<svelte:fragment slot="author" class="flex gap-4 items-center">
+						<img class="w-7 h-7 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Jese Leos avatar" />
+						<span class="font-medium dark:text-white"> Jese Leos </span>
+					</svelte:fragment>
+					<Button color="purple">Read more <ArrowRightOutline size="sm" class="ml-2" /></Button>
+				</ArticleAuthor>
+			</ArticleWrapper>
+	
+			<ArticleWrapper>
+				<ArticleHead>
+					<span class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+						<NewspaperSolid size="xs" class="mr-1" />
+						Article
+					</span>
+					<span class="text-sm">14 days ago</span>
+				</ArticleHead>
+				<ArticleBody>
+					<svelte:fragment slot="h2"><a href="/">Our first project with React</a></svelte:fragment>
+					<svelte:fragment slot="paragraph">
+						<p class="mb-5 font-light text-gray-500 dark:text-gray-400">Static websites are now used to bootstrap lots of websites and are becoming the basis for a variety of tools that even influence both web designers and developers influence both web designers and developers.</p>
+					</svelte:fragment>
+				</ArticleBody>
+				<ArticleAuthor>
+					<svelte:fragment slot="author" class="flex gap-4 items-center">
+						<img class="w-7 h-7 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png" alt="Bonnie Green avatar" />
+						<span class="font-medium dark:text-white"> Bonnie Green </span>
+					</svelte:fragment>
+					<Button color="purple">Read more <ArrowRightOutline size="sm" class="ml-2" /></Button>
+				</ArticleAuthor>
+			</ArticleWrapper>
+		</BlogBodyWrapper>
+	</Section>
+
+	<Section name="testimonial">
+		<Testimonial>
+			<blockquote>
+				<p class="text-2xl font-medium text-gray-900 dark:text-white">"Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to complex dashboard. Perfect choice for your next SaaS application."</p>
+			</blockquote>
+			<svelte:fragment slot="footer">
+				<img class="w-6 h-6 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png" alt="michael profile" />
+				<div class="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
+					<div class="pr-3 font-medium text-gray-900 dark:text-white">Micheal Gough</div>
+					<div class="pl-3 text-sm font-light text-gray-500 dark:text-gray-400">CEO at Google</div>
+				</div>
+			</svelte:fragment>
+		</Testimonial>
+	</Section>
+
+	<Section>
+		<Newsletter>
+			<svelte:fragment slot="h2">Sign up for our newsletter</svelte:fragment>
+			<p class="mx-auto mb-8 max-w-2xl font-light text-gray-500 md:mb-12 sm:text-xl dark:text-gray-400">Stay up to date with the roadmap progress, announcements and exclusive discounts feel free to sign up with your email.</p>
+			<form action="/">
+				<div class="items-center mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex sm:space-y-0">
+					<div class="relative w-full">
+						<Label class="hidden">Email address</Label>
+						<Input id="email" type="email" placeholder="Enter your email" size="md" class="block p-3 pl-10 w-full text-sm rounded-lg border border-gray-300 sm:rounded-none sm:rounded-l-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+							<EnvelopeSolid slot="left" size="sm" class="text-gray-500 dark:text-gray-400 ml-2" />
+						</Input>
+					</div>
+					<div>
+						<Button type="submit" class="py-3 px-5 w-full text-sm font-medium text-center text-white rounded-lg border cursor-pointer border-primary-600 sm:rounded-none sm:rounded-r-lg focus:ring-4  dark:focus:ring-primary-800">Subscribe</Button>
+					</div>
+				</div>
+				<div class="mx-auto max-w-screen-sm text-sm text-left text-gray-500 newsletter-form-footer dark:text-gray-300">
+					We care about the protection of your data. <a href="/" class="font-medium text-primary-600 dark:text-primary-500 hover:underline">Read our Privacy Policy</a>.
+				</div>
+			</form>
+		</Newsletter>
+	</Section>
+</Layout>

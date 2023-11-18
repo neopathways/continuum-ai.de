@@ -14,14 +14,14 @@
 		DarkMode,
 		MegaMenu,
 	} from "flowbite-svelte";
-	import { ArrowRightOutline, ChevronDownOutline } from "flowbite-svelte-icons";
+	import { ChevronDownOutline } from "flowbite-svelte-icons";
 	import type { User } from "@prisma/client";
 
 	export let loggedIn: boolean;
 	export let user: User;
 
 	let menu2 = [
-    { href: "/", image: "https://lirp.cdn-website.com/df735c7c/dms3rep/multi/opt/MicrosoftTeams-image+%28123%29-640w.png", name: 'Online Stores', help: "Connect with third-party tools that you're already using." },
+    { href: "/projects/avatars", image: "/images/continuum-avatars-logo.jpeg", name: 'Continuum Avatars', help: "An open-source avatar generator, designed to provide diverse, customizable avatars for various applications." },
     { href: "/", image: "https://lirp.cdn-website.com/df735c7c/dms3rep/multi/opt/MicrosoftTeams-image+%28123%29-640w.png", name: 'Segmentation', help: "Connect with third-party tools that you're already using." },
     { href: "/", image: "https://lirp.cdn-website.com/df735c7c/dms3rep/multi/opt/MicrosoftTeams-image+%28123%29-640w.png", name: 'Marketing CRM', help: "Connect with third-party tools that you're already using." },
 
@@ -85,7 +85,7 @@
 			</NavLi>
 			<MegaMenu full={false} items={menu2} let:item class="!bg-gray-800 !border-gray-700 z-50" ulClass="grid !grid-cols-3 gap-4">
 				<a href={item.href} class="flex flex-row gap-4 items-start p-3 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700 h-full">
-					<img class="w-12 h-12" src={item.image} alt="awd">
+					<img class="w-12 h-12 rounded-full" src={item.image} alt="awd">
 					<div>
 						<div class="font-semibold text-gray-50">{item.name}</div>
 						<span class="text-sm font-light text-gray-400">{item.help}</span>
