@@ -1,0 +1,31 @@
+---
+import { A } from "flowbite-svelte";
+import "../style/global.scss";
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+	<head>
+		<meta charset="UTF-8" />
+		
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+	</head>
+	<body class="w-screen h-screen overflow-hidden ">
+		<div class="fixed top-4 left-4">
+			<A href="/"><img src="/images/continuum-logo-no-text.svg" alt="Continuum" width="40"></A>
+		</div>
+		<main class="h-screen dark:bg-primary-900 overflow-y-auto">
+			<div class="px-4">
+				<slot></slot>
+			</div>
+		</main>
+	</body>
+</html>

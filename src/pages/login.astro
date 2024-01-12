@@ -1,5 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BlankLayout from "../layouts/BlankLayout.astro";
 import LoginModule from "../modules/LoginModule.svelte";
 import { verifyToken } from "../utils/jwt";
 
@@ -16,6 +16,6 @@ if (token) {
 }
 ---
 
-<Layout title="Login | Continuum">
+<BlankLayout title="Login | Continuum">
 	<LoginModule client:load></LoginModule>
-</Layout>
+</BlankLayout>
